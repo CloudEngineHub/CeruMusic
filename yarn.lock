@@ -2608,27 +2608,30 @@
   resolved "https://registry.npmmirror.com/@shikijs/vscode-textmate/-/vscode-textmate-10.0.2.tgz"
   integrity sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==
 
-"@shiqianjiang/ceru-plugin-core@file:vendor/shiqianjiang-ceru-plugin-core-0.3.7.tgz":
-  version "0.3.7"
-  resolved "file:vendor/shiqianjiang-ceru-plugin-core-0.3.7.tgz#a17fec3add5e3d227cf9d7ee3860c38f380255b6"
+"@shiqianjiang/ceru-plugin-core@0.3.12":
+  version "0.3.12"
+  resolved "https://registry.npmjs.org/@shiqianjiang/ceru-plugin-core/-/ceru-plugin-core-0.3.12.tgz#f76a16e6e84796db8209a5d2409337a569b3ddc7"
+  integrity sha512-uRTx0WRkrR7YBrV00gCT92ASxmh7X6HDGq0v50oZxnFIJLp7q6KOlII3cjhoZmJ7siOTByOk9EiNNc9Lndcv0A==
   dependencies:
-    "@shiqianjiang/ceru-plugin-issuer" "0.3.7"
-    "@shiqianjiang/ceru-plugin-sdk" "0.3.7"
+    "@shiqianjiang/ceru-plugin-issuer" "0.3.12"
+    "@shiqianjiang/ceru-plugin-sdk" "0.3.12"
     axios "^1.13.2"
     socket.io-client "^4.8.3"
     ws "^8.21.3"
 
-"@shiqianjiang/ceru-plugin-issuer@0.3.7", "@shiqianjiang/ceru-plugin-issuer@file:vendor/shiqianjiang-ceru-plugin-issuer-0.3.7.tgz":
-  version "0.3.7"
-  resolved "file:vendor/shiqianjiang-ceru-plugin-issuer-0.3.7.tgz#e4f875be2983d92ff8504da8396c3fdd1b7d4605"
+"@shiqianjiang/ceru-plugin-issuer@0.3.12":
+  version "0.3.12"
+  resolved "https://registry.npmjs.org/@shiqianjiang/ceru-plugin-issuer/-/ceru-plugin-issuer-0.3.12.tgz#4bb06f5fa6788b98c01a38900cd8429a273418ef"
+  integrity sha512-UMNvGSnedE7t+/jfzh9b1DSs6LDzLF7qVS/5CHsAWeeIroOzlM5Cid2xce5we2LuetlXoJ2DMbUT8toyr6KKIw==
   dependencies:
-    "@shiqianjiang/ceru-plugin-sdk" "0.3.7"
+    "@shiqianjiang/ceru-plugin-sdk" "0.3.12"
     acorn "^8.18.0"
     ajv "^8.20.0"
 
-"@shiqianjiang/ceru-plugin-sdk@0.3.7", "@shiqianjiang/ceru-plugin-sdk@file:vendor/shiqianjiang-ceru-plugin-sdk-0.3.7.tgz":
-  version "0.3.7"
-  resolved "file:vendor/shiqianjiang-ceru-plugin-sdk-0.3.7.tgz#634448209c8516756b048e1509b4421aac095e99"
+"@shiqianjiang/ceru-plugin-sdk@0.3.12":
+  version "0.3.12"
+  resolved "https://registry.npmjs.org/@shiqianjiang/ceru-plugin-sdk/-/ceru-plugin-sdk-0.3.12.tgz#f17b21897f2cba45affdf33a031fef14bf1f981b"
+  integrity sha512-KYqHS25qwp5IYsPUPHS1q5EbvBW5H2UagQBreZ8Pol9vpxXwWhIWiuce+H7FKrs44yTdnpWYx+LXDXnFKXvL1w==
   dependencies:
     "@types/lodash" "^4.17.25"
     buffer "^6.0.3"
@@ -5195,6 +5198,14 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
+
+echarts@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-6.1.0.tgz#ae0f68590f5ebbd728d900907c27acde7c5456d1"
+  integrity sha512-q0yaFPggC9FUdsWH4blavRWFmxdrIodbkoKNAjJudAI6CA9gNPxHtV2RcZNEepZVlk4yvBYkOkbk6HIVpIyHZA==
+  dependencies:
+    tslib "2.3.0"
+    zrender "6.1.0"
 
 ejs@^3.1.8:
   version "3.1.10"
@@ -9803,7 +9814,7 @@ socket.io-parser@~4.2.4:
     "@socket.io/component-emitter" "~3.1.0"
     debug "~4.4.1"
 
-socks-proxy-agent@^8.0.3:
+socks-proxy-agent@^8.0.3, socks-proxy-agent@^8.0.5:
   version "8.0.5"
   resolved "https://registry.npmmirror.com/socks-proxy-agent/-/socks-proxy-agent-8.0.5.tgz#b9cdb4e7e998509d7659d689ce7697ac21645bee"
   integrity sha512-HehCEsotFqbPW9sJ8WVYB6UbmIMv7kUUORIF2Nncq4VQvBfNBLibW9YZR5dlYCSUhwcD628pRllm7n+E+YTzJw==
@@ -10415,6 +10426,11 @@ ts-jest@^29.4.6:
     semver "^7.7.3"
     type-fest "^4.41.0"
     yargs-parser "^21.1.1"
+
+tslib@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
+  integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
 
 tslib@^2.1.0, tslib@^2.4.0:
   version "2.8.1"
@@ -11412,6 +11428,13 @@ zod@^3.25.32:
   version "3.25.76"
   resolved "https://registry.npmmirror.com/zod/-/zod-3.25.76.tgz"
   integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==
+
+zrender@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-6.1.0.tgz#c3ef06e6426d5c28865b7183035680d685e00136"
+  integrity sha512-oEGMDB6pOP2S6OwRR4PdVv610zrjnA3Bh+JnSG12fYJlBKjtNAoEb5fSUoCOOINlH96I2fU38/A2UpRKs67xYQ==
+  dependencies:
+    tslib "2.3.0"
 
 zwitch@^2.0.4:
   version "2.0.4"
