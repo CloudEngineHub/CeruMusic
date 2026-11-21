@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { desktopBridge } from '@renderer/services/desktopBridge'
 import { MessagePlugin } from 'tdesign-vue-next'
 
 const dragging = ref(false)
@@ -51,11 +52,7 @@ function onDragLeave(event: DragEvent) {
 }
 
 function pathOf(file: File): string {
-  const webUtils = (window as any).electron?.webUtils
-  const resolved = webUtils?.getPathForFile?.(file)
-  if (typeof resolved === 'string' && resolved) return resolved
-  const legacy = (file as any).path
-  return typeof legacy === 'string' ? legacy : ''
+  return desktopBridge.api.plugins.getPathForFile(file)
 }
 
 async function onDrop(event: DragEvent) {
@@ -81,7 +78,7 @@ async function onDrop(event: DragEvent) {
         continue
       }
       try {
-        await window.api.plugins.queueExternalFile(filePath)
+        await desktopBridge.api.plugins.queueExternalFile(filePath)
       } catch (error: any) {
         MessagePlugin.error(error?.message || `无法添加 ${file.name}`)
       }
