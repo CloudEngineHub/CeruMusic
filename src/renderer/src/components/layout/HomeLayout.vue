@@ -4,7 +4,7 @@ import { canPersistMusicData } from '@renderer/services/musicDataPersistence'
 import TitleBarControls from '@renderer/components/TitleBarControls.vue'
 import SearchSuggest from '@renderer/components/search/searchSuggest.vue'
 import PluginSidebarIcon from '@renderer/components/PluginSidebarIcon.vue'
-import { SearchIcon, MicrophoneIcon } from 'tdesign-icons-vue-next'
+import { SearchIcon } from 'tdesign-icons-vue-next'
 import { onMounted, onUnmounted, ref, watchEffect, computed, watch } from 'vue'
 import { LocalUserDetailStore } from '@renderer/store/LocalUserDetail'
 import { useRouter, useRoute } from 'vue-router'
@@ -23,6 +23,7 @@ import {
 } from '@renderer/services/pluginState'
 import SourceDisabledHint from '../SourceDisabledHint.vue'
 
+const sourceListZIndex = 10_000_000
 let stopWatchEffect: (() => void) | null = null
 
 onMounted(() => {
@@ -391,13 +392,24 @@ function checkGuide() {
                 </button>
                 <!-- 透明遮罩 -->
                 <transition name="mask">
-                  <div v-if="source_list_show" class="source-mask" @click="handleMaskClick"></div>
+                  <div
+                    v-if="source_list_show"
+                    class="source-mask"
+                    :style="{ zIndex: sourceListZIndex - 1 }"
+                    @click="handleMaskClick"
+                  ></div>
                 </transition>
                 <!-- 音源选择列表 -->
                 <transition name="source">
-                  <div v-if="source_list_show" class="source-list">
+                  <div v-if="source_list_show" class="source-list" :style="{ zIndex: sourceListZIndex }">
                     <div class="items">
-                      <SourceDisabledHint v-for="item in sourcePickerEntries.filter(entry => entry.source !== 'local')" :key="item.key" :reason="item.reason" v-slot="{ events }">
+                      <SourceDisabledHint
+                        v-for="item in sourcePickerEntries.filter(entry => entry.source !== 'local')"
+                        :key="item.key"
+                        :reason="item.reason"
+                        :z-index="sourceListZIndex + 1"
+                        v-slot="{ events }"
+                      >
                       <button type="button" v-on="events"
                         class="source-item"
                         :class="{ active: item.selected }"
@@ -449,7 +461,19 @@ function checkGuide() {
                   aria-label="听歌识曲"
                   @click="router.push('/home/recognize')"
                 >
-                  <MicrophoneIcon class="recognize-glyph" aria-hidden="true" />
+                  <svg
+                    class="recognize-glyph"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="9" y="3" width="6" height="11" rx="3" />
+                    <path d="M6 11a6 6 0 0 0 12 0M12 17v4m-3 0h6" />
+                  </svg>
                 </button>
               </t-tooltip>
 
@@ -691,8 +715,7 @@ function checkGuide() {
       .recognize-button {
         -webkit-app-region: no-drag;
         margin-inline-start: 0.25rem;
-        display: grid;
-        place-items: center;
+        position: relative;
         flex: 0 0 var(--end-button-size);
         width: var(--end-button-size);
         height: var(--end-button-size);
@@ -703,6 +726,11 @@ function checkGuide() {
         color: var(--td-text-color-primary);
         cursor: pointer;
 
+        > .recognize-glyph {
+          position: absolute;
+          inset: 0;
+          margin: auto;
+        }
       }
 
       .search-input .search-submit,
@@ -810,7 +838,6 @@ function checkGuide() {
           left: 0;
           right: 0;
           bottom: 0;
-          z-index: 9999999;
           background: transparent;
           cursor: pointer;
         }
@@ -819,7 +846,6 @@ function checkGuide() {
           position: absolute;
           top: 100%;
           left: 0;
-          z-index: 10000000;
           background: var(--home-source-list-bg);
           border: 1px solid var(--home-source-list-border);
           border-radius: 0.5rem;
